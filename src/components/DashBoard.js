@@ -21,14 +21,14 @@ function DashBoard() {
 
             </div>
             <div id="Container-S-I-I">
-            <Card image={Test} encabezado="Hola"/>
+            <Card image={Test} encabezado="Hola" valor="10"/>
                 
             </div>
 
             </div>
 
             <div id="Container-S-Derecho">
-            <Card image={Test} encabezado="Hola"/>
+            <Card image={image1} encabezado="Hola" valor="39"/>
 
             </div>
 

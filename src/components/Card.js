@@ -11,6 +11,7 @@ function Card(props) {
         props.image ?
         <>
             <h6 className="mine-head">{props.encabezado}</h6>
+            <p>{props.valor}</p>
             <img src={props.image} className="mine-graphic"/> 
         </>
         :<></> }
