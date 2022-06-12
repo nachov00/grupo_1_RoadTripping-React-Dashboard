@@ -10,8 +10,8 @@ import image3 from "../assets/images/VentasMensual.png";
 import image4 from "../assets/images/Usuarios.png";
 import image5 from "../assets/images/BalanceAnual.png";
 import image6 from "../assets/images/Glaciar.jpg";
-import image7 from "../assets/images/Mendoza.jpg";
-
+import image7 from "../assets/images/Iguazu.jpg";
+import image8 from "../assets/images/Bariloche.jpg";
 
 function DashBoard() {
 
@@ -28,18 +28,18 @@ function DashBoard() {
 
             </div>
             <div id="Container-S-I-I">
-              <div>
-                <Card image={image2} encabezado="Hola" valor="10" />
-                </div>
-              <div>
-                <Card image={image3} encabezado="De nuevo" valor="11" />
-                </div>
+              <div id="Container-S-I-I1">
+                <Card image={image2} encabezado="Promedio de Ventas por Temporadas" valor="" />
+              </div>
+              <div id="Container-S-I-I2">
+                <Card image={image3} encabezado="Promedio de Ventas Mensual" valor="" />
+              </div>
             </div>
 
           </div>
 
           <div id="Container-S-Derecho">
-            <Card image={image1} encabezado="Hola" valor="12" />
+            <Card image={image1} encabezado="Destinos con mas ventas" valor="" />
           </div>
 
         </div>
@@ -49,21 +49,24 @@ function DashBoard() {
 
             <div id="Container-I-I-Izquierdo">
               <div>
-                <Card image={image6} encabezado="Hola" />
+                <Card image={image6} encabezado="Promoción Calafate" />
               </div>
               <div>
-                <Card image={image7} encabezado="Hola" />
+                <Card image={image7} encabezado="Promoción Iguazú" />
+              </div>
+              <div>
+                <Card image={image8} encabezado="Promoción Bariloche" />
               </div>
             </div>
 
             <div id="Container-I-I-Derecho">
-              <Card image={image4} encabezado="Hola" />
+              <Card image={image4} encabezado="Crecimiento de Usuarios por Pais" />
             </div>
 
           </div>
 
           <div id="Container-I-Derecho">
-            <Card image={image5} encabezado="Hola" />
+            <Card image={image5} encabezado="Balance de Ventas Anual" />
 
           </div>
 
