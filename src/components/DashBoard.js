@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import "../assets/App.css";
 import "../assets/css/DashBoard.css";
@@ -15,6 +15,42 @@ import image8 from "../assets/images/Bariloche.jpg";
 
 function DashBoard() {
 
+let PromedioDeVentas= 3
+let PromedioDeVentasMensual= 8
+let DestinosConMasVentas= "Europa, EEUU, Argentina"
+let BalanceAnual= 30
+let Usuarios=()=>{
+let [UsuariosTotales, setUsuariosTotales]= useState(null);
+useEffect(()=>{
+  fetch("http://localhost:3030/API/users")
+.then(res=>res.json()) 
+.then(data=>{
+  data.map((user)=>{
+  return {id: user.id, nombre: user.nombre, apellido: user.apellido, usuario: user.usuario}
+})
+})
+
+.then(data=>{
+  let userdata={
+    total: data.meta.count
+  }
+  setUsuariosTotales(userdata)
+})
+
+})
+}
+let [ProductosTotales, setProductosTotales]= useState(null)
+useEffect(()=>{
+  fetch("http://localhost:3030/API/products")
+.then(res=>res.json()) 
+.then(data=>{
+  let productdata={
+    total: data.meta.count
+  }
+  setProductosTotales(productdata)
+})
+
+})
 
   return (
     <React.Fragment>
@@ -29,17 +65,17 @@ function DashBoard() {
             </div>
             <div id="Container-S-I-I">
               <div id="Container-S-I-I1">
-                <Card image={image2} encabezado="Promedio de Ventas por Temporadas" valor="" />
+                <Card image={image2} encabezado="Promedio de Ventas por Temporadas" valor={PromedioDeVentas} />
               </div>
               <div id="Container-S-I-I2">
-                <Card image={image3} encabezado="Promedio de Ventas Mensual" valor="" />
+                <Card image={image3} encabezado="Promedio de Ventas Mensual" valor={PromedioDeVentasMensual} />
               </div>
             </div>
 
           </div>
 
           <div id="Container-S-Derecho">
-            <Card image={image1} encabezado="Destinos con mas ventas" valor="" />
+            <Card image={image1} encabezado="Destinos con mas ventas" valor={DestinosConMasVentas} valor2={ProductosTotales} />
           </div>
 
         </div>
@@ -60,13 +96,13 @@ function DashBoard() {
             </div>
 
             <div id="Container-I-I-Derecho">
-              <Card image={image4} encabezado="Crecimiento de Usuarios por Pais" />
+              <Card image={image4} encabezado="Crecimiento de Usuarios por Pais" valor={Usuarios.total} />
             </div>
 
           </div>
 
           <div id="Container-I-Derecho">
-            <Card image={image5} encabezado="Balance de Ventas Anual" />
+            <Card image={image5} encabezado="Balance de Ventas Anual" valor={BalanceAnual} />
 
           </div>
 
