@@ -7,13 +7,13 @@ const Product = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3030/api/products")
+    fetch("http://localhost:3000/api/products")
       .then((res) => res.json())
       .then((data) => {
-        let info = data.product;
+        let info = data.products;
         setProduct(info);
         const productData = {
-          total: data.meta.count,
+          total: data.meta.id,
         };
         setCantidad(productData);
         let count = data.meta.countByCategory;
@@ -24,7 +24,7 @@ const Product = () => {
   return (
     <div>
       <div>
-        <h3 className="title">Dashboard</h3>
+        <h3 className="title">Dashboard Unforged</h3>
       </div>
       <div className="body">
         <div className="product_container">
