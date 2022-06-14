@@ -14,75 +14,66 @@ import image7 from "../assets/images/Iguazu.jpg";
 import image8 from "../assets/images/Bariloche.jpg";
 
 function DashBoard() {
+  let PromedioDeVentas = 3;
+  let PromedioDeVentasMensual = 8;
+  let DestinosConMasVentas = "Europa, EEUU, Argentina";
+  let BalanceAnual = 30;
 
-let PromedioDeVentas= 3
-let PromedioDeVentasMensual= 8
-let DestinosConMasVentas= "Europa, EEUU, Argentina"
-let BalanceAnual= 30
-let Usuarios=()=>{
-let [UsuariosTotales, setUsuariosTotales]= useState(null);
-useEffect(()=>{
-  fetch("http://localhost:3030/API/users")
-.then(res=>res.json()) 
-.then(data=>{
-  data.map((user)=>{
-  return {id: user.id, nombre: user.nombre, apellido: user.apellido, usuario: user.usuario}
-})
-})
+  let [UsuariosTotales, setUsuariosTotales] = useState(null);
 
-.then(data=>{
-  let userdata={
-    total: data.meta.count
-  }
-  setUsuariosTotales(userdata)
-})
+  useEffect(() => {
+    fetch("http://localhost:3030/API/users")
+      .then((res) => res.json())
+      .then((data) => {
+        setUsuariosTotales(data.meta.count);
+      });
+    }, []);
 
-})
-}
-let [ProductosTotales, setProductosTotales]= useState(null)
-useEffect(()=>{
-  fetch("http://localhost:3030/API/products")
-.then(res=>res.json()) 
-.then(data=>{
-  let productdata={
-    total: data.meta.count
-  }
-  setProductosTotales(productdata)
-})
-
-})
+  let [ProductosTotales, setProductosTotales] = useState(null);
+  useEffect(() => {
+    fetch("http://localhost:3030/API/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProductosTotales(data.meta.count);
+      });
+  });
 
   return (
     <React.Fragment>
       <div id="Dashboard">
         <div id="Container-Superior">
-
           <div id="Container-S-Izquierdo">
-
             <div id="Container-S-I-S">
               <img src={Logo} className="mine-logo" />
-
             </div>
             <div id="Container-S-I-I">
               <div id="Container-S-I-I1">
-                <Card image={image2} encabezado="Promedio de Ventas por Temporadas" valor={PromedioDeVentas} />
+                <Card
+                  image={image2}
+                  encabezado="Promedio de Ventas por Temporadas"
+                  valor={PromedioDeVentas}
+                />
               </div>
               <div id="Container-S-I-I2">
-                <Card image={image3} encabezado="Promedio de Ventas Mensual" valor={PromedioDeVentasMensual} />
+                <Card
+                  image={image3}
+                  encabezado="Promedio de Ventas Mensual"
+                  valor={PromedioDeVentasMensual}
+                />
               </div>
             </div>
-
           </div>
 
           <div id="Container-S-Derecho">
-            <Card image={image1} encabezado="Destinos con mas ventas" valor={DestinosConMasVentas} valor2={ProductosTotales} />
+            <Card
+              image={image1}
+              encabezado="Destinos con mas ventas"
+              valor={ProductosTotales}
+            />
           </div>
-
         </div>
         <div id="Container-Inferior">
-
           <div id="Container-I-Izquierdo">
-
             <div id="Container-I-I-Izquierdo">
               <div>
                 <Card image={image6} encabezado="Promoción Calafate" />
@@ -96,16 +87,21 @@ useEffect(()=>{
             </div>
 
             <div id="Container-I-I-Derecho">
-              <Card image={image4} encabezado="Crecimiento de Usuarios por Pais" valor={Usuarios.total} />
+              <Card
+                image={image4}
+                encabezado="Crecimiento de Usuarios por Pais"
+                valor={UsuariosTotales}
+              />
             </div>
-
           </div>
 
           <div id="Container-I-Derecho">
-            <Card image={image5} encabezado="Balance de Ventas Anual" valor={BalanceAnual} />
-
+            <Card
+              image={image5}
+              encabezado="Balance de Ventas Anual"
+              valor={BalanceAnual}
+            />
           </div>
-
         </div>
       </div>
     </React.Fragment>

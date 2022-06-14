@@ -15,12 +15,6 @@ function Card(props) {
             <img src={props.image} className="mine-graphic"/> 
         </>
         :<></> }
-        {props.valor2 ?
-        <>
-        <p>{props.valor2}</p>
-        </>
-        :<></> }
-
 
        </div>
     </React.Fragment>
