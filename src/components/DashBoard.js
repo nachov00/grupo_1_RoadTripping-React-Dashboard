@@ -13,6 +13,8 @@ import image6 from "../assets/images/Glaciar.jpg";
 import image7 from "../assets/images/Iguazu.jpg";
 import image8 from "../assets/images/Bariloche.jpg";
 
+
+
 function DashBoard() {
   let PromedioDeVentas = 3;
   let PromedioDeVentasMensual = 8;
@@ -20,24 +22,30 @@ function DashBoard() {
   let BalanceAnual = 30;
 
   let [UsuariosTotales, setUsuariosTotales] = useState(null);
+  let [ MensajeUsuarios, setMensajeUsuarios] = useState("No hay registro sobre los usuarios")
 
   useEffect(() => {
     fetch("http://localhost:3030/API/users")
       .then((res) => res.json())
       .then((data) => {
         setUsuariosTotales(data.meta.count);
+        setMensajeUsuarios("La cantidad de Usuarios es de "+ UsuariosTotales)
       });
     }, []);
-
-  let [ProductosTotales, setProductosTotales] = useState(null);
-  useEffect(() => {
-    fetch("http://localhost:3030/API/products")
+    
+    
+    let [ProductosTotales, setProductosTotales] = useState(null);
+    let [ MensajeProductos, setMensajeProductos] = useState("No hay registro sobre los Productos")
+    useEffect(() => {
+      fetch("http://localhost:3030/API/products")
       .then((res) => res.json())
       .then((data) => {
         setProductosTotales(data.meta.count);
+        setMensajeProductos("La cantidad de Productos es de "+ ProductosTotales)
       });
-  });
-
+    });
+    
+    
   return (
     <React.Fragment>
       <div id="Dashboard">
@@ -68,7 +76,7 @@ function DashBoard() {
             <Card
               image={image1}
               encabezado="Destinos con mas ventas"
-              valor={ProductosTotales}
+              valor={MensajeProductos}
             />
           </div>
         </div>
@@ -90,7 +98,7 @@ function DashBoard() {
               <Card
                 image={image4}
                 encabezado="Crecimiento de Usuarios por Pais"
-                valor={UsuariosTotales}
+                valor={MensajeUsuarios}
               />
             </div>
           </div>
